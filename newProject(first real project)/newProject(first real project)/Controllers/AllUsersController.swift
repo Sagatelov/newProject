@@ -8,23 +8,51 @@
 import UIKit
 
 class AllUsersController: UIViewController, StorybordedProtocol, Navigator {
+  
+    @IBOutlet weak var usersTableView: UITableView! {
+        didSet {
+            usersTableView.delegate = self
+            usersTableView.dataSource = self
+            let xib = UINib(nibName: "TableViewCellUsersXib" , bundle: nil)
+            usersTableView.register(xib, forCellReuseIdentifier: "XibUsers")
+        }
+    }
+    
+    private let networKManager = NetworkManager()
+    var navigator: UsersNavigator?
+    var users = [UsersModel]() {
+        didSet {
+            usersTableView.reloadData()
+        }
+    }
 
-    weak var navigator: UsersNavigator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("load")
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print("apprar")
-    }
-   
-    @IBAction func button(_ sender: UIButton) {
-        navigator?.showNext(page: .postsPage)
+        networKManager.loadAllUsers { userArray in
+            DispatchQueue.main.async {
+                self.users = userArray
+            }
+        }
     }
 }
 
 
+extension AllUsersController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        users.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = usersTableView.dequeueReusableCell(withIdentifier: "XibUsers", for: indexPath) as! TableViewCellUsersXib
+        cell.configur(data: users[indexPath.row])
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let navigator = navigator {
+            navigator.showNext(page: .postsPage(users[indexPath.row]))
+        }
+    }
+}

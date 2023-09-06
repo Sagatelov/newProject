@@ -12,17 +12,28 @@ class UsersNavigator {
     
     private var navigationController: UINavigationController
     
+    
     enum Destination {
-        case postsPage
-        case commentsPage
+        case postsPage(UsersModel)
+        case commentsPage(PostsModel)
     }
     
     func showNext(page: Destination) {
         var nextPage: Navigator
         
         switch page {
-        case .postsPage: nextPage =  AllPostsOfUserController.ControllerFromStorybord()
-        case .commentsPage: nextPage = AllCommentsOfPostsController.ControllerFromStorybord()
+            
+            //crate controller for page of posts
+            //where "ofUser" is injection that pass information about selected user
+        case .postsPage(let ofUser): nextPage = AllPostsOfUserController.ControllerFromStorybord(withItem: ofUser, complition: { coder in
+            guard let controller = AllPostsOfUserController(selectedUser: ofUser, coder: coder) else { fatalError("Failed to create postPage") }
+            return controller })
+            
+            //crate controller for page of comment
+            //where "ofPost" is injection that pass information about selected posts
+        case .commentsPage(let ofPost): nextPage = AllCommentsOfPostsController.ControllerFromStorybord(withItem: ofPost, complition: { coder in
+            guard let controller = AllCommentsOfPostsController(selectedPost: ofPost, coder: coder) else { fatalError("Failed to create postPage") }
+            return controller })
         }
         
         if let nextControler = nextPage as? UIViewController {
@@ -43,7 +54,7 @@ class UsersNavigator {
 
 extension UsersNavigator: NavigationInitialProtocol {
     func VewControllerInit() -> UIViewController {
-    return navigationController
+        return navigationController
     }
 }
 

@@ -10,6 +10,8 @@ import UIKit
 
 protocol StorybordedProtocol {
     static func ControllerFromStorybord() -> Self
+    
+    static func ControllerFromStorybord<T>(withItem: T, complition: @escaping (NSCoder) -> Self) -> Self
 }
 
 extension StorybordedProtocol where Self: UIViewController {
@@ -20,3 +22,18 @@ extension StorybordedProtocol where Self: UIViewController {
         return storyboard.instantiateViewController(identifier: id) as! Self
     }
 }
+
+extension StorybordedProtocol where Self: UIViewController {
+    
+    static func ControllerFromStorybord<T>(withItem: T, complition: @escaping (NSCoder) -> Self) -> Self {
+        
+        let id = String(describing: self)
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let controller = storyboard.instantiateViewController(identifier: id) { coder in
+            let conteiner = complition(coder)
+            return conteiner
+        }
+        return controller as! Self
+    }
+}
+
