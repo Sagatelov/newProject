@@ -21,7 +21,7 @@ class AllPostsOfUserController: UIViewController, StorybordedProtocol, Navigator
     
     private let networKManager = NetworkManager()
     weak var navigator: UsersNavigator?
-    var selectedUser: UsersModel
+    var selectedUser: UsersModel  //did tap user on users controller
     
     var posts: [PostsModel] = [] {
         didSet {
@@ -53,6 +53,7 @@ class AllPostsOfUserController: UIViewController, StorybordedProtocol, Navigator
     
     
     //MARK: - initialization code
+    
     init?(selectedUser: UsersModel, coder: NSCoder) {
         self.selectedUser = selectedUser
         super.init(coder: coder)
@@ -66,6 +67,7 @@ class AllPostsOfUserController: UIViewController, StorybordedProtocol, Navigator
 
 
 //MARK: - extensions
+
 extension AllPostsOfUserController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         selectedPosts.count

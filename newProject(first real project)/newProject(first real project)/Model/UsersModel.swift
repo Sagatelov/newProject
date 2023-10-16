@@ -12,10 +12,23 @@ class UsersModel: Codable {
     var name: String
     var username: String
     var email: String
-    var address: UserAddressInfo
-    var phone: String
-    var website: String
-    var company: UserCompanyInfo
+    var address: UserAddressInfo?
+    var phone: String?
+    var website: String?
+    var company: UserCompanyInfo?
+    
+    init (entity: UsersEntity) {
+        self.id = Int(entity.id)
+        self.name = entity.name ?? ""
+        self.username = entity.username ?? ""
+        self.email = entity.email ?? ""
+        self.address = nil
+        self.phone = nil
+        self.website = nil
+        self.company = nil
+        
+        
+    }
 }
 
 class UserAddressInfo: Codable {

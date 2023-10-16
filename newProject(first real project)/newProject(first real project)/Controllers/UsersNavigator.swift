@@ -59,5 +59,5 @@ extension UsersNavigator: NavigationInitialProtocol {
 }
 
 protocol Navigator {
-    var navigator: UsersNavigator? { get set }
+   var navigator: UsersNavigator? { get set }
 }

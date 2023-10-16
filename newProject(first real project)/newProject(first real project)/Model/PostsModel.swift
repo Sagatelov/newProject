@@ -12,4 +12,11 @@ class PostsModel: Codable {
     var id: Int
     var title: String
     var body: String
+    
+    init(postEntity: PostEntity) {
+        self.userId = Int(postEntity.userId)
+        self.id = Int(postEntity.id)
+        self.title = postEntity.title ?? ""
+        self.body = postEntity.body ?? ""
+    }
 }

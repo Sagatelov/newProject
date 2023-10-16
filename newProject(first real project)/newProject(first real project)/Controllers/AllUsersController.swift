@@ -9,6 +9,7 @@ import UIKit
 
 class AllUsersController: UIViewController, StorybordedProtocol, Navigator {
   
+    @IBOutlet weak var loadUsersActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var usersTableView: UITableView! {
         didSet {
             usersTableView.delegate = self
@@ -19,7 +20,7 @@ class AllUsersController: UIViewController, StorybordedProtocol, Navigator {
     }
     
     private let networKManager = NetworkManager()
-    var navigator: UsersNavigator?
+    weak var navigator: UsersNavigator?
     var users = [UsersModel]() {
         didSet {
             usersTableView.reloadData()
@@ -29,9 +30,12 @@ class AllUsersController: UIViewController, StorybordedProtocol, Navigator {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loadUsersActivityIndicator.startAnimating()
         networKManager.loadAllUsers { userArray in
             DispatchQueue.main.async {
                 self.users = userArray
+                self.loadUsersActivityIndicator.stopAnimating()
             }
         }
     }
