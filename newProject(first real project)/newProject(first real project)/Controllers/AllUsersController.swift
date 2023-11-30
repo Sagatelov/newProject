@@ -19,8 +19,8 @@ class AllUsersController: UIViewController, StorybordedProtocol, Navigator {
         }
     }
     
-    private let networKManager = NetworkManager()
     weak var navigator: UsersNavigator?
+    private let networKManager = NetworkManager()
     var users = [UsersModel]() {
         didSet {
             usersTableView.reloadData()
@@ -30,7 +30,6 @@ class AllUsersController: UIViewController, StorybordedProtocol, Navigator {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         loadUsersActivityIndicator.startAnimating()
         networKManager.loadAllUsers { userArray in
             DispatchQueue.main.async {
@@ -56,7 +55,7 @@ extension AllUsersController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let navigator = navigator {
-            navigator.showNext(page: .postsPage(users[indexPath.row]))
+            navigator.showNext(page: .postsPage(self.users[indexPath.row]))
         }
     }
 }

@@ -52,7 +52,7 @@ class AllPostsOfUserController: UIViewController, StorybordedProtocol, Navigator
     }
     
     
-    //MARK: - initialization code
+    //MARK: - init code
     
     init?(selectedUser: UsersModel, coder: NSCoder) {
         self.selectedUser = selectedUser

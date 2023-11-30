@@ -21,9 +21,6 @@ extension StorybordedProtocol where Self: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         return storyboard.instantiateViewController(identifier: id) as! Self
     }
-}
-
-extension StorybordedProtocol where Self: UIViewController {
     
     static func ControllerFromStorybord<T>(withItem: T, complition: @escaping (NSCoder) -> Self) -> Self {
         
@@ -36,4 +33,5 @@ extension StorybordedProtocol where Self: UIViewController {
         return controller as! Self
     }
 }
+
 

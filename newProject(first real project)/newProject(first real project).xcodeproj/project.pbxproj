@@ -112,6 +112,8 @@
 				9421DC152A9A42C600BD4954 /* AppDelegate.swift */,
 				9421DC172A9A42C600BD4954 /* SceneDelegate.swift */,
 				94A34ED42A9E666600270DC9 /* StorybordedProtocol.swift */,
+				94A34EBC2A9D208000270DC9 /* MainNavigator.swift */,
+				94A34EC82A9D3E1800270DC9 /* UsersNavigator.swift */,
 				9421DC262A9A42C700BD4954 /* Info.plist */,
 				9492EC222AAF97ED006E7C55 /* Core */,
 				94A34EBE2A9D209200270DC9 /* Controllers */,
@@ -147,8 +149,8 @@
 		9492EC242AB0C7D1006E7C55 /* DataBaseModels */ = {
 			isa = PBXGroup;
 			children = (
-				9492EC1C2AABB607006E7C55 /* PostEntity.swift */,
 				945565D22AA9294800D27191 /* UsersEntity.swift */,
+				9492EC1C2AABB607006E7C55 /* PostEntity.swift */,
 			);
 			path = DataBaseModels;
 			sourceTree = "<group>";
@@ -166,8 +168,6 @@
 		94A34EBE2A9D209200270DC9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				94A34EBC2A9D208000270DC9 /* MainNavigator.swift */,
-				94A34EC82A9D3E1800270DC9 /* UsersNavigator.swift */,
 				94A34ECE2A9E301700270DC9 /* AllUsersController.swift */,
 				94A34ED02A9E305800270DC9 /* AllPostsOfUserController.swift */,
 				94A34ED22A9E308800270DC9 /* AllCommentsOfPostsController.swift */,
@@ -203,7 +203,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					9421DC112A9A42C600BD4954 = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -331,6 +331,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -392,6 +393,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -415,8 +417,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "newProject(first real project)/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -431,6 +435,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Andrew.newProject-first-real-project-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -442,8 +447,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "newProject(first real project)/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -458,6 +465,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Andrew.newProject-first-real-project-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

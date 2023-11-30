@@ -8,6 +8,10 @@
 import Foundation
 import UIKit
 
+protocol Navigator {
+    var navigator: UsersNavigator? { get set }
+}
+
 class UsersNavigator {
     
     private var navigationController: UINavigationController
@@ -18,7 +22,7 @@ class UsersNavigator {
         case commentsPage(PostsModel)
     }
     
-    func showNext(page: Destination) {
+    final func showNext(page: Destination) {
         var nextPage: Navigator
         
         switch page {
@@ -58,6 +62,4 @@ extension UsersNavigator: NavigationInitialProtocol {
     }
 }
 
-protocol Navigator {
-   var navigator: UsersNavigator? { get set }
-}
+

@@ -8,8 +8,12 @@
 import Foundation
 import UIKit
 
-class MainNavigator {
+protocol NavigationInitialProtocol {
+    func VewControllerInit() -> UIViewController
+}
 
+class MainNavigator {
+    
     static let shered = MainNavigator()
     
     let window: UIWindow
@@ -28,6 +32,4 @@ class MainNavigator {
     }
 }
 
-protocol NavigationInitialProtocol {
-   func VewControllerInit() -> UIViewController
-}
+

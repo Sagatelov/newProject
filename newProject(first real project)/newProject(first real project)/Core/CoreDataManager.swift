@@ -31,10 +31,13 @@ class CoreDataManager {
         
         let context = contaner.viewContext
         
-        for user in users {
-            _ = try? UsersEntity.findOrCreateUser(user: user, with: context)
-            
+        context.perform {
+            for user in users {
+                _ = try? UsersEntity.findOrCreateUser(user: user, with: context)
+                
+            }
         }
+        
         try? context.save()
         
         complitionHandler()

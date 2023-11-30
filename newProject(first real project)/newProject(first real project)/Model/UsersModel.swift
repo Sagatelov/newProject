@@ -7,7 +7,7 @@
 
 import Foundation
 
-class UsersModel: Codable {
+struct UsersModel: Codable {
     var id: Int
     var name: String
     var username: String
@@ -31,7 +31,7 @@ class UsersModel: Codable {
     }
 }
 
-class UserAddressInfo: Codable {
+struct UserAddressInfo: Codable {
     var street: String
     var suite: String
     var city: String
@@ -39,12 +39,12 @@ class UserAddressInfo: Codable {
     var geo: UserGeoInfo
 }
 
-class UserGeoInfo: Codable {
+struct UserGeoInfo: Codable {
     var lat: String
     var lng: String
 }
 
-class UserCompanyInfo: Codable {
+struct UserCompanyInfo: Codable {
     var name: String
     var catchPhrase: String
     var bs: String

@@ -14,7 +14,7 @@ class UsersEntity: NSManagedObject {
         
        
         do {
-            if let findUsers =  try find(byId: user.id, context: context) {
+            if let findUsers = try find(byId: user.id, context: context) {
                 return findUsers
             } else {
                 let userEntity = UsersEntity(context: context)
